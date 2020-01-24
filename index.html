@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Recording In Progress</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <H1>Call Recording In Progress</H1>
+        <h3>#9 to record</h3>
+        <h2><span class='inbound'>Inbound |</span><span class="outbound"> Outbound</span></h2>
+        <h2><span class="phone">Phone Number |</span><span class="call"> Call Group |</span><span class="ext"> Extension</span></h2>
+    </br>
+            <h3>Tenant Level</h3>
+            <h4>Account > Settings > Recording Setting </h4>
+            <div class="box">
+                    <div class="item">
+                        <input type="checkbox" name="" id="tYes">
+                        <p>Yes</p>
+                    </div>
+                    <div class="item">
+                        <input type="checkbox" name="" id="tNo">
+                        <p>No</p>
+                    </div>
+                    <div class="item">
+                        <input type="checkbox" name="" id="tCbE">
+                        <p>Configure By Extension</p>
+                    </div>
+                </div> 
+            </div>
+                <h3>Call Group</h3>
+                <h4>Features > Call Group > (Select Call Group) > Record Calls </h4>
+            <div class="box">
+                <div class="item">
+                    <input type="checkbox" name="" id="cgYes">
+                    <p>Yes</p>
+                </div>
+                <div class="item">
+                    <input type="checkbox" name="" id="cgNo">
+                    <p>No</p>
+                </div>
+                <div class="item">
+                    <input type="checkbox" name="" id="cgOd">
+                    <p>On Demand</p>
+                </div>
+            </div>
+            </div>
+      
+                <h3>Extension</h3>
+                <h4>Settings > Extensions > (Select Extension) > Call Recording </h4>
+            </div>
+            <div class="box">
+                <div class="item">
+                    <input type="checkbox" name="" id="extYes">
+                    <p>Yes</p>
+                </div>
+                <div class="item">
+                    <input type="checkbox" name="" id="extNo">
+                    <p>No</p>
+                </div>
+                <div class="item">
+                    <input type="checkbox" name="" id="extOd">
+                    <p>On Demand</p>
+                </div>
+            </div>
+            </div>
+        <style>
+            body {
+                text-align: center;
+                background: #193549;
+                color: white;
+                font-family: 'helvetica neue', sans-serif;
+                font-weight: 200;
+                font-size: 14px;
+            }
+            h1 {
+                color:lightgray;
+            }
+            h2 {
+                color: lightblue;
+            }
+            .box {
+                max-width: 400px;
+                margin: 10px auto;
+                background:lightblue;
+                border-radius: 5px;
+                box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
+                text-align: left;
+            }
+
+            .item {
+                display: flex;
+                align-items: center;
+                border-bottom: 0;
+            }
+
+            .item:last-child {
+                border-bottom: 0;
+            }
+
+            input:checked + p {
+                background: #f9f9f9;
+    
+            }
+            p {
+                margin: 0;
+                color: black;
+                padding: 10px;
+                flex: 1;
+            }
+            .poundNine {
+                display: hidden;
+            }
+            .red {
+                color:red;
+            }
+
+        
+        </style>
+        <script>
+            const checkboxes = document.querySelectorAll('.box input[type="checkbox"]');
+
+            const outbound = document.querySelector('.outbound')
+            const inbound = document.querySelector('.inbound')
+            const phone = document.querySelector('.phone')
+            const call = document.querySelector('.call')
+            const poundNine = document.querySelector('.poundNine')
+            const ext = document.querySelector('.ext')
+
+            let tNo = document.getElementById('tNo');
+            let tYes = document.getElementById('tYes');
+            let tCbE = document.getElementById('tCbe');
+            let cgNo = document.getElementById('cgNo');
+            let cgYes = document.getElementById('cgYes');
+            let cgOd = document.getElementById('cg0d');
+            let extYes = document.getElementById('extYes');
+            let extNo = document.getElementById('extNo');
+            let extOd = document.getElementById('extOd');
+
+            
+
+            function handleCheck(){
+    
+                    recordAllInboundAndOutbound()
+                    recordNothing()
+                    poundNine()
+                    recordOutboundOnly()
+            }
+
+            function recordAllInboundAndOutbound() {
+                if(tYes.checked){
+                    outbound.classList.add('red')
+                    inbound.classList.add('red')
+                    phone.classList.add('red')
+                    call.classList.add('red')
+                    ext.classList.add('red')
+
+                }
+
+            }
+            function recordNothing() {
+             if(tNo.checked) {
+                           outbound.classList.remove('red')
+                           inbound.classList.remove('red')
+                           phone.classList.remove('red')
+                           call.classList.remove('red')
+                           ext.classList.remove('red')
+             }
+            }
+            function addPoundNine() {
+                
+                poundNine.classList.add('poundNine')
+            }
+            function recordOutboundOnly() {
+            
+
+            }
+
+            checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
+        
+        </script>
+    </body>
+</html>
